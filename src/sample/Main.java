@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.function.IntConsumer;
 
 public class Main extends Application {
     boolean w;
