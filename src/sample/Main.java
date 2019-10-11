@@ -21,7 +21,7 @@ public class Main extends Application {
         GameMap map = new GameMap(Integer.parseInt(reader.get("mapxCells")), Integer.parseInt(reader.get("mapyCells")), boxBoundaries);
         Parent root = map.getPane();
         Scene scene = new Scene(root, boxBoundaries * map.getXCells(), boxBoundaries * map.getYCells());
-        Tank tank = new Tank(6, TankColor.BLACK);
+        Tank tank = new Tank(4, TankColor.YELLOW);
 
         if(reader.get("controlScheme").equalsIgnoreCase("snake")){
             new GameCycle(500, () -> {
