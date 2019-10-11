@@ -20,7 +20,7 @@ public class Main extends Application {
         GameMap map = new GameMap(Integer.parseInt(reader.get("mapxCells")), Integer.parseInt(reader.get("mapyCells")), boxBoundaries);
         Parent root = map.getPane();
         Scene scene = new Scene(root, boxBoundaries * map.getXCells(), boxBoundaries * map.getYCells());
-        Tank tank = new Tank(2, TankColor.GRAY);
+        Tank tank = new Tank(2, TankColor.PINK);
 
         new GameCycle(500, () -> {
             if(d && !a) tank.turn(Direction.RIGHT);
