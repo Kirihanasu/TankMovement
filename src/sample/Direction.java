@@ -31,5 +31,3 @@ public enum Direction{
     else return 90;
   }
 }
-
-

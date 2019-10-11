@@ -83,4 +83,8 @@ public class Tank extends Entity{
   public Track getTracksBelow(){
     return tracksBelow;
   }
+
+  public Direction getDirection(){
+    return dir;
+  }
 }
