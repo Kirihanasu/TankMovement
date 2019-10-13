@@ -21,7 +21,7 @@ public class Main extends Application {
         GameMap map = new GameMap(Integer.parseInt(reader.get("mapxCells")), Integer.parseInt(reader.get("mapyCells")), boxBoundaries);
         Parent root = map.getPane();
         Scene scene = new Scene(root, boxBoundaries * map.getXCells(), boxBoundaries * map.getYCells());
-        Tank tank = new Tank(8, TankColor.CYAN);
+        Tank tank = new Tank(4, TankColor.BLACK);
 
         if(reader.get("controlScheme").equalsIgnoreCase("snake")){
             new GameCycle(500, () -> {
@@ -80,6 +80,8 @@ public class Main extends Application {
         });*/
 
         map.spawnAtCell( 5,5, tank);
+
+
 
         primaryStage.setTitle("Definitely not War.IO");
         primaryStage.setScene(scene);
