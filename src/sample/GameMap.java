@@ -67,11 +67,11 @@ public class GameMap{
     return boxBoundaries;
   }
 
-  public void setShowGrid(boolean show){
-    grid.setGridLinesVisible(show);
-  }
-
   public boolean getShowGrid(){
     return grid.isGridLinesVisible();
+  }
+
+  public void setShowGrid(boolean show){
+    grid.setGridLinesVisible(show);
   }
 }

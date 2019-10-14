@@ -3,6 +3,7 @@ package sample;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -13,15 +14,16 @@ public class Main extends Application {
     boolean s;
     boolean d;
     static PropReader reader;
+    GameMap map;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         reader = new PropReader(new File(this.getClass().getResource("tanks.properties").getFile()));
         int boxBoundaries = Integer.parseInt(reader.get("boxBoundaries"));
-        GameMap map = new GameMap(Integer.parseInt(reader.get("mapxCells")), Integer.parseInt(reader.get("mapyCells")), boxBoundaries);
+        map = new GameMap(Integer.parseInt(reader.get("mapxCells")), Integer.parseInt(reader.get("mapyCells")), boxBoundaries);
         Parent root = map.getPane();
         Scene scene = new Scene(root, boxBoundaries * map.getXCells(), boxBoundaries * map.getYCells());
-        Tank tank = new Tank(4, TankColor.BLACK);
+        Tank tank = new Tank(0, TankColor.CYAN);
 
         if(reader.get("controlScheme").equalsIgnoreCase("snake")){
             new GameCycle(500, () -> {
@@ -47,6 +49,8 @@ public class Main extends Application {
                 }else if(e.getCode().getName().equals("S")){
                     s = true;
                 }
+
+                addG(e);
             });
         }else{
             new GameCycle(500, () -> {
@@ -64,35 +68,20 @@ public class Main extends Application {
                 }else if(e.getCode().getName().equals("A")){
                     a = true;
                 }
+                addG(e);
             });
         }
 
-        scene.setOnKeyPressed(e -> {
-            scene.getOnKeyPressed();
-
-            if(e.getCode().getName().equals("G")){
-                System.out.println("gee");
-                map.setShowGrid(!map.getShowGrid());
-            }
-        });
-
-        /*scene.setOnKeyReleased(e ->{
-            if(e.getCode().getName().equals("D")){
-                d = false;
-            }else if(e.getCode().getName().equals("A")){
-                a = false;
-            }else if(e.getCode().getName().equals("W")){
-                w = false;
-            }else if(e.getCode().getName().equals("S")){
-                s = false;
-            }
-        });*/
-
         map.spawnAtCell( 5,5, tank);
-
-        primaryStage.setTitle("Definitely not War.IO");
+        primaryStage.setTitle("War.IO");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private void addG(KeyEvent e){
+        if(e.getCode().getName().equals("G")){
+            map.setShowGrid(!map.getShowGrid());
+        }
     }
 
     public static void main(String[] args) {
