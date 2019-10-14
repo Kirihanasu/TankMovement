@@ -66,4 +66,12 @@ public class GameMap{
   public int getBoxBoundaries(){
     return boxBoundaries;
   }
+
+  public void setShowGrid(boolean show){
+    grid.setGridLinesVisible(show);
+  }
+
+  public boolean getShowGrid(){
+    return grid.isGridLinesVisible();
+  }
 }

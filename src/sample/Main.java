@@ -67,6 +67,15 @@ public class Main extends Application {
             });
         }
 
+        scene.setOnKeyPressed(e -> {
+            scene.getOnKeyPressed();
+
+            if(e.getCode().getName().equals("G")){
+                System.out.println("gee");
+                map.setShowGrid(!map.getShowGrid());
+            }
+        });
+
         /*scene.setOnKeyReleased(e ->{
             if(e.getCode().getName().equals("D")){
                 d = false;
@@ -80,8 +89,6 @@ public class Main extends Application {
         });*/
 
         map.spawnAtCell( 5,5, tank);
-
-
 
         primaryStage.setTitle("Definitely not War.IO");
         primaryStage.setScene(scene);
